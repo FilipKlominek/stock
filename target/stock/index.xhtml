@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:body>
+    <h2>Markets</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>
+                Descriptive name
+            </th>
+            <th>
+                Ticker symbol
+            </th>
+            <th>
+                Market id
+            </th>
+        </tr>
+        </thead>
+        <ui:repeat value="#{marketBean.stockMarkets}" var="market">
+            <tr>
+                <td>#{market.name}</td>
+                <td>#{market.symbol}</td>
+                <td>#{market.id}</td>
+            </tr>
+        </ui:repeat>
+    </table>
+
+    <h2>Remove market</h2>
+    <h:form>
+        <div>
+            <h:outputLabel>id: </h:outputLabel>
+            <h:inputText value="#{marketBean.removeId}"/>
+        </div>
+        <div>
+            <h:commandButton value="sumbmit" onclick="#{marketBean.removeMarket()}"/>
+        </div>
+    </h:form>
+    <h2>Add market</h2>
+    <h:form>
+        <div>
+            <h:outputLabel>ticker symbol: </h:outputLabel>
+            <h:inputText value="#{marketBean.addTicker_symbol}"/>
+        </div>
+        <div>
+            <h:outputLabel>name: </h:outputLabel>
+            <h:inputText value="#{marketBean.addDescriptive_name}"/>
+        </div>
+        <div>
+            <h:commandButton value="sumbmit" onclick="#{marketBean.addMarket()}"/>
+        </div>
+    </h:form>
+    <h2>Edit market</h2>
+    <h:form>
+        <div>
+            <h:outputLabel>id: </h:outputLabel>
+            <h:inputText value="#{marketBean.editId}"/>
+        </div>
+        <div>
+            <h:outputLabel>new ticker symbol: </h:outputLabel>
+            <h:inputText value="#{marketBean.editTicker_symbol}"/>
+        </div>
+        <div>
+            <h:outputLabel>new name: </h:outputLabel>
+            <h:inputText value="#{marketBean.editDescriptive_name}"/>
+        </div>
+        <div>
+            <h:commandButton value="sumbmit" onclick="#{marketBean.editMarket()}"/>
+        </div>
+    </h:form>
+</h:body>
+</html>
